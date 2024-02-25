@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Калькулятор ипотеки</title>
+		<link rel="stylesheet" href="./css/main.css" />
+		<link rel="stylesheet" href="./libs/noUiSlider/nouislider.css">
+	</head>
+	<body>
+
+		<div class="container">
+			<div class="title">Калькулятор ипотеки</div>
+			<div class="row">
+				<form id="form" class="col-left">
+					
+					<div class="programms-wraper">
+						<input type="radio" name="program" value="base" id="base-value" class="radio-hidden" checked>
+						<label for="base-value" class="radio-label">Базовая ставка
+							<input type="number" value="16.7" class="radio-label-percent" step="0.1" min="0" max="999">
+							%
+						</label>
+
+						<input type="radio" name="program" value="it" id="it-value" class="radio-hidden">
+						<label for="it-value" class="radio-label">IT ипотека 
+							<input type="number" value="4.7" class="radio-label-percent" step="0.1" min="0" max="999">
+							%
+						</label>
+
+						<input type="radio" name="program" value="gov" id="gov-value" class="radio-hidden">
+						<label for="gov-value" class="radio-label">Господдержка 
+							<input type="number" value="6.7" class="radio-label-percent" step="0.1" min="0" max="999">
+							%
+						</label>
+
+						<input type="radio" name="program" value="zero" id="zero-value" class="radio-hidden">
+						<label for="zero-value" class="radio-label">Без первого взноса 
+							<input type="number" value="12" class="radio-label-percent" step="0.1" min="0" max="999">
+							%
+						</label>
+					</div>
+					
+
+					
+					<div class="params-wrapper">
+
+						<label class="param">
+							<div class="param__details">
+								<div class="param__title">Стоимость недвижимости</div>
+								<input type="text" class="param__value" value="" inputmode="decimal" id="input-cost">
+							</div>
+							<div class="param__range-slider" id="slider-cost"></div>
+
+							<div class="param__limits limit">
+								<div class="limit__from">375 тыс. Р</div>
+								<div class="limit__50">10 млн Р</div>
+								<div class="limit__to">100 млн Р</div>
+							</div>
+						</label>
+
+						<label class="param">
+							<div class="param__details">
+								<div class="param__title">Первоначальный взнос</div>
+								<input type="text" class="param__value" value="" id="input-downpayment">
+							</div>
+							<div class="param__range-slider" id="slider-downpayment"></div>
+
+							<div class="param__limits limit">
+								<div class="limit__from" id="percents-from">20%</div>
+								<div class="limit__to">90%</div>
+							</div>
+						</label>
+
+						<label class="param">
+							<div class="param__details">
+								<div class="param__title">Срок кредита</div>
+								<input type="text" class="param__value" value="" id="input-term">
+							</div>
+							<div class="param__range-slider" id="slider-term"></div>
+
+							<div class="param__limits limit">
+								<div class="limit__from">1 год</div>
+								<div class="limit__to">30 лет</div>
+							</div>
+						</label>
+
+					</div>
+
+				</form>
+				
+				<div class="col-right">
+					
+					<div class="summary">
+
+						<div class="summary__item summary-item">
+							<div class="summary-item__title">Ежемесячный платеж</div>
+							<div class="summary-item__value summary-item__value--bigger" id="total-month-payment">XXXX</div>
+						</div>
+
+						<div class="summary__item summary-item">
+							<div class="summary-item__title">Процентная ставка</div>
+							<div class="summary-item__value summary-item__value--bigger summary-item__value--percents" id="total-percent">XX</div>
+						</div>
+
+						<div class="summary__item summary-item">
+							<div class="summary-item__title">Сумма кредита</div>
+							<div class="summary-item__value" id="total-cost">XXXX</div>
+						</div>
+
+						<div class="summary__item summary-item">
+							<div class="summary-item__title">Переплата</div>
+							<div class="summary-item__value" id="total-overpayment">XXXX</div>
+						</div>
+
+					</div>
+
+					<div class="order-form-wrapper">
+						<button class="order-btn" id="openFormBtn" type="button">Оставить заявку</button>
+					</div>
+
+				</div>
+				
+			</div>
+		</div>
+
+		
+		<script src="./libs/noUiSlider/nouislider.min.js"></script>
+		<script src="./libs/cleaveJS/cleave.min.js"></script>
+		<script src="./libs/phoneInput/phoneInput.js"></script>
+
+		
+		<script src="./js/controller.js" type="module" defer></script>
+
+    </body>
+</html>
