@@ -43,14 +43,22 @@ function setData(newData) {
         if (newData.id === 'zero-value') data.minFirstPayment = 0
         else if (newData.id === 'gov-value') data.minFirstPayment = 0.3
         else data.minFirstPayment = 0.2;
-    }
 
-    if (newData.onUpdate === 'inputCost' || newData.onUpdate === 'costSlider' || newData.onUpdate === 'radioProgram') {
         // если первый взнос не входит в допустимый интервал
         if (data.firstPayment > data.getMaxFirstPayment()) {
             data.firstPayment = data.getMaxFirstPayment();
         } else if (data.firstPayment < data.getMinFirstPayment()) {
             data.firstPayment = data.getMinFirstPayment();
+        }
+        data.firstPaymentPercents = data.firstPayment / data.cost;
+    }
+
+    if (newData.onUpdate === 'inputCost' || newData.onUpdate === 'costSlider') {
+        // если первый взнос не входит в допустимый интервал
+        if (data.firstPayment > newData.cost * data.maxFirstPayment) {
+            data.firstPayment = newData.cost * data.maxFirstPayment;
+        } else if (data.firstPayment < newData.cost * data.minFirstPayment) {
+            data.firstPayment = newData.cost * data.minFirstPayment;
         }
         data.firstPaymentPercents = data.firstPayment / newData.cost;
     }
