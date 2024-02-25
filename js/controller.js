@@ -32,12 +32,12 @@ window.onload = function() {
     const sliderTerm = termRange(getData);
 
     // init start
-    if (localStorage.getItem('morgageRate')) {
-        Model.setData({selectedProgram: +JSON.parse(localStorage.getItem('morgageRate')).base});
-        document.querySelector('#base-value + .radio-label .radio-label-percent').value = priceFormatter1.format(+JSON.parse(localStorage.getItem('morgageRate')).base * 100);
-        document.querySelector('#it-value + .radio-label .radio-label-percent').value = priceFormatter1.format(+JSON.parse(localStorage.getItem('morgageRate')).it * 100);
-        document.querySelector('#gov-value + .radio-label .radio-label-percent').value = priceFormatter1.format(+JSON.parse(localStorage.getItem('morgageRate')).gov * 100);
-        document.querySelector('#zero-value + .radio-label .radio-label-percent').value = priceFormatter1.format(+JSON.parse(localStorage.getItem('morgageRate')).zero * 100);
+    if (localStorage.getItem('mortgageRate')) {
+        Model.setData({selectedProgram: +JSON.parse(localStorage.getItem('mortgageRate')).base});
+        document.querySelector('#base-value + .radio-label .radio-label-percent').value = priceFormatter1.format(+JSON.parse(localStorage.getItem('mortgageRate')).base * 100);
+        document.querySelector('#it-value + .radio-label .radio-label-percent').value = priceFormatter1.format(+JSON.parse(localStorage.getItem('mortgageRate')).it * 100);
+        document.querySelector('#gov-value + .radio-label .radio-label-percent').value = priceFormatter1.format(+JSON.parse(localStorage.getItem('mortgageRate')).gov * 100);
+        document.querySelector('#zero-value + .radio-label .radio-label-percent').value = priceFormatter1.format(+JSON.parse(localStorage.getItem('mortgageRate')).zero * 100);
     } else {
         Model.setData({});
         document.querySelector('#base-value + .radio-label .radio-label-percent').value = getData().programs.base * 100;

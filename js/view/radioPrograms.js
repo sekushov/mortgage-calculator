@@ -29,7 +29,7 @@ function init(getData) {
         });
 
         inputRate.addEventListener('change', () => {
-            localStorage.setItem('morgageRate', JSON.stringify({
+            localStorage.setItem('mortgageRate', JSON.stringify({
                 'base': +priceFormatter3.format(document.querySelector('#base-value + .radio-label .radio-label-percent').value / 100),
                 'it': +priceFormatter3.format(document.querySelector('#it-value + .radio-label .radio-label-percent').value / 100),
                 'gov': +priceFormatter3.format(document.querySelector('#gov-value + .radio-label .radio-label-percent').value / 100),
