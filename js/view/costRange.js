@@ -7,12 +7,11 @@ function init(getData) {
     noUiSlider.create(slider, {
         start: data.cost,
         connect: 'lower',
-        tooltips: true,
         step: 100000,
         range: {
             min: data.minPrice,
             '1%': [400000, 100000],
-            '50%': [10000000, 500000],
+            '70%': [10000000, 500000],
             max: data.maxPrice
         }
     });

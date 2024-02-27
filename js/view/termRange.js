@@ -6,7 +6,6 @@ function init(getData) {
     noUiSlider.create(slider, {
         start: getData().term,
         connect: 'lower',
-        tooltips: true,
         step: 1,
         range: {
             min: getData().minTerm,

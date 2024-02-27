@@ -6,7 +6,6 @@ function init(getData) {
     noUiSlider.create(slider, {
         start: getData().firstPaymentPercents * 100,
         connect: 'lower',
-        tooltips: true,
         step: 1,
         range: {
             min: getData().minFirstPayment * 100,

@@ -1,8 +1,8 @@
 let data = {
     selectedProgram: 0.167,
-    cost: 3000000,
-    minPrice: 375000,
-    maxPrice: 100000000,
+    cost: 3300000,
+    minPrice: 500000,
+    maxPrice: 30000000,
     minFirstPayment: 0.2,
     getMinFirstPayment: function() {
         return this.cost * this.minFirstPayment
@@ -11,8 +11,8 @@ let data = {
     getMaxFirstPayment: function() {
         return this.cost * this.maxFirstPayment
     },
-    firstPayment: 600000,
-    firstPaymentPercents: 0.2,
+    firstPayment: 990000,
+    firstPaymentPercents: 0.3,
     programs: {
         base: 0.167,
         it: 0.05,
