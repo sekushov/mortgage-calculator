@@ -456,7 +456,7 @@ body {
 	width: 11%;
 }
 .table-del-btn {
-	background: url(./../../img/bin.png) center center / contain no-repeat;
+	background: url(./../img/bin.png) center center / contain no-repeat;
     width: 25px;
     height: 25px;
 }
