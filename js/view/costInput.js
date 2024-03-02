@@ -1,6 +1,4 @@
-import updateModel from './../utils/updateModel.js';
-
-function init(getData) {
+function init(getData, updateModel) {
     const data = getData();
     const inputNumber = document.querySelector('#input-cost');
 
@@ -15,28 +13,25 @@ function init(getData) {
 
     inputNumber.addEventListener('input', function() {
         const value = +cleaveInput.getRawValue();
-
         if (value < data.minPrice || value > data.maxPrice) {
             inputNumber.closest('.param__details').classList.add('param__details--error');
         } else {
             inputNumber.closest('.param__details').classList.remove('param__details--error');
-            updateModel(inputNumber, {cost: value, onUpdate: 'inputCost'});
+            updateModel(inputNumber, +cleaveInput.getRawValue());
         }
-
     });
 
     inputNumber.addEventListener('change', function() {
         const value = +cleaveInput.getRawValue();
         if (value > data.maxPrice) {
             inputNumber.closest('.param__details').classList.remove('param__details--error');
-            cleaveInput.setRawValue(Number(String(value).substr(0, 8)));
+            cleaveInput.setRawValue(data.maxPrice);
         }
         if (value < data.minPrice) {
             inputNumber.closest('.param__details').classList.remove('param__details--error');
             cleaveInput.setRawValue(data.minPrice);
         }
-
-        updateModel(inputNumber, {cost: +cleaveInput.getRawValue(), onUpdate: 'inputCost'});
+        updateModel(inputNumber, +cleaveInput.getRawValue());
     });
 
     return cleaveInput;

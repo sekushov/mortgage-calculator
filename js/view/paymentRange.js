@@ -1,6 +1,4 @@
-import updateModel from "./../utils/updateModel.js";
-
-function init(getData) {
+function init(getData, updateModel) {
     const slider = document.querySelector('#slider-downpayment');
     let sliderValue;
     noUiSlider.create(slider, {
@@ -21,7 +19,7 @@ function init(getData) {
     slider.noUiSlider.on('slide', function() {
         document.querySelector('.noUi-tooltip').style.display = 'block';
         sliderValue = parseInt(slider.noUiSlider.get());
-        updateModel(slider, {firstPaymentPercents: sliderValue / 100, onUpdate: 'paymentSlider'});
+        updateModel(slider, sliderValue / 100);
     });
 
     return slider;

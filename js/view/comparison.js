@@ -2,7 +2,6 @@ import { plural, priceFormatter } from '../utils/formatters.js';
 
 const table = document.querySelector('#comparison-table');
 const tbody = table.querySelector('tbody');
-const addToComparisonBtn = document.querySelector('#add-to-comparison-btn');
 
 function sortComparison() {
     // sort table
@@ -84,7 +83,9 @@ function addToComparison(comparisonList) {
             tr.appendChild(td);                
         }
         const tdBtn = document.createElement('td');
-        tdBtn.innerHTML = '<button class="table-del-btn">Удалить</button>';
+        const tdBtnDel = document.createElement('button');
+        tdBtnDel.classList.add('table-del-btn');
+        tdBtn.appendChild(tdBtnDel);
         tr.appendChild(tdBtn);
         tbody.appendChild(tr);
     }

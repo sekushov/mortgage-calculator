@@ -1,6 +1,4 @@
-import updateModel from "./../utils/updateModel.js";
-
-function init(getData) {
+function init(getData, updateModel) {
     const slider = document.querySelector('#slider-term');
     let sliderValue;
     noUiSlider.create(slider, {
@@ -15,7 +13,7 @@ function init(getData) {
 
     slider.noUiSlider.on('slide', function() {
         sliderValue = parseInt(slider.noUiSlider.get());
-        updateModel(slider, {term: sliderValue, onUpdate: 'termSlider'});
+        updateModel(slider, sliderValue);
     });
 
     return slider;

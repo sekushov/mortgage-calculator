@@ -455,6 +455,15 @@ body {
 #comparison-table th:nth-child(6) {
 	width: 11%;
 }
+.table-del-btn {
+	background: url(./../../img/bin.png) center center / contain no-repeat;
+    width: 25px;
+    height: 25px;
+}
+.table-del-btn:hover {
+    width: 30px;
+    height: 30px;
+}
 
 
 

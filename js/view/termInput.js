@@ -1,10 +1,10 @@
-import updateModel from '../utils/updateModel.js';
-
-function init(getData) {
+function init(getData, updateModel) {
     const inputNumber = document.querySelector('#input-term');
 
     const settings = {
         numeral: true,
+        numeralThousandsGroupStyle: 'thousand',
+        delimiter: ' '
     };
 
     const cleaveInput = new Cleave(inputNumber, settings);
@@ -17,7 +17,7 @@ function init(getData) {
             inputNumber.closest('.param__details').classList.add('param__details--error');
         } else {
             inputNumber.closest('.param__details').classList.remove('param__details--error');
-            updateModel(inputNumber, {term: value, onUpdate: 'inputTerm'});
+            updateModel(inputNumber, value);
         }
 
     });
@@ -31,8 +31,7 @@ function init(getData) {
             inputNumber.closest('.param__details').classList.remove('param__details--error');
             cleaveInput.setRawValue(getData().minTerm);
         }
-
-        updateModel(inputNumber, {term: value, onUpdate: 'inputTerm'});
+        updateModel(inputNumber, value);
     });
 
     return cleaveInput;

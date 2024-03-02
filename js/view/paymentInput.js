@@ -1,6 +1,5 @@
-import updateModel from '../utils/updateModel.js';
-
-function init(getData) {
+function init(getData, updateModel) {
+    
     const inputNumber = document.querySelector('#input-downpayment');
 
     const settings = {
@@ -14,14 +13,12 @@ function init(getData) {
 
     inputNumber.addEventListener('input', function() {
         const value = +cleaveInput.getRawValue();
-
         if (value < getData().getMinFirstPayment() || value > getData().getMaxFirstPayment()) {
             inputNumber.closest('.param__details').classList.add('param__details--error');
         } else {
             inputNumber.closest('.param__details').classList.remove('param__details--error');
-            updateModel(inputNumber, {firstPayment: value, onUpdate: 'inputPayment'});
+            updateModel(inputNumber, value);
         }
-
     });
 
     inputNumber.addEventListener('change', function() {
@@ -34,7 +31,7 @@ function init(getData) {
             cleaveInput.setRawValue(getData().getMinFirstPayment());
         }
 
-        updateModel(inputNumber, {firstPayment: value, onUpdate: 'inputPayment'});
+        updateModel(inputNumber, +cleaveInput.getRawValue());
     });
 
     return cleaveInput;
