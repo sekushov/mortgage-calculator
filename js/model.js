@@ -21,12 +21,12 @@ let data = {
     },
     term: 20,
     minTerm: 1,
-    maxTerm: 30
+    maxTerm: 30,
+    comparison: []
 };
 
 let results = {
     rate: data.selectedProgram,
-
 };
 
 function getData() {

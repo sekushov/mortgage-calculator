@@ -116,12 +116,30 @@
 					</div>
 
 					<div class="order-form-wrapper">
-						<button class="order-btn" id="openFormBtn" type="button">Добавить в сравнение</button>
+						<a href="#comparison-table">
+							<button class="order-btn" id="add-to-comparison-btn" type="button">Добавить в сравнение</button>
+						</a>
 					</div>
 
 				</div>
 				
 			</div>
+
+			<table id="comparison-table" style="display: none">
+				<thead>
+					<tr>
+						<th data-type="string">Название</th>
+						<th data-type="number">Платёж</th>
+						<th data-type="number">Первый взнос</th>
+						<th data-type="number">Ставка</th>
+						<th data-type="number">Стоимость</th>
+						<th data-type="number">Срок</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+
 		</div>
 
 		

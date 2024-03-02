@@ -13,6 +13,8 @@ import paymentRange from './view/paymentRange.js';
 import termInput from './view/termInput.js';
 import termRange from './view/termRange.js';
 
+import comparison from './view/comparison.js';
+
 window.onload = function() {
     const getData = Model.getData;
 
@@ -47,6 +49,9 @@ window.onload = function() {
     }
     const results = Model.getResults();
     updateResultsView(results);
+
+    // init comparison
+    comparison(getData, Model.getResults);
 
     // update form
     document.addEventListener('updateForm', (e) => {
@@ -85,6 +90,7 @@ window.onload = function() {
         }
         if (data.onUpdate !== 'paymentSlider') {
             sliderPayment.noUiSlider.set(data.firstPaymentPercents * 100);
+            document.querySelector('.noUi-tooltip').style.display = 'none';
         }
         if (data.onUpdate === 'inputTerm') {
             sliderTerm.noUiSlider.set(data.term);
