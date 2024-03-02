@@ -20,7 +20,7 @@ window.onload = function() {
     const getData = Model.getData;
 
     // init programs
-    programs(getData);
+    programs();
 
     // init cost input
     const cleaveCost = costInput(getData);

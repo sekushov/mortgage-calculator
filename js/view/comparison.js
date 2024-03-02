@@ -10,8 +10,7 @@ function sortComparison() {
     table.addEventListener('click', (e) => {
         if (e.target.tagName !== 'TH') return;
         let th = e.target;
-        if (table.querySelector('th').style.display === 'table-cell') sortGrid(th.cellIndex, th.dataset.type)
-        else if (table.querySelector('th').style.display === 'none') sortGrid(th.cellIndex-1, th.dataset.type);
+        sortGrid(th.cellIndex, th.dataset.type);
         sort = !sort;
         if (table.querySelector('th.active')) table.querySelector('th.active').classList.remove('active');
         th.classList.add('active');
@@ -56,7 +55,7 @@ function addToComparison(comparisonList) {
                 case 'id': continue;
                 case 'monthPayment': td.innerHTML = priceFormatter.format(comparisonList[i][key]);
                     break;
-                case 'title': if (screen.orientation.type === 'landscape-primary') {
+                case 'title': 
                     switch (comparisonList[i][key]) {
                         case 'base-value': td.innerHTML = 'Базовая';
                             break;
@@ -67,11 +66,6 @@ function addToComparison(comparisonList) {
                         case 'zero-value': td.innerHTML = 'Без 1-го вноса';
                             break;
                         default: td.innerHTML = 'Базовая';
-                    }
-                        table.firstElementChild.firstElementChild.firstElementChild.style.display = 'table-cell';
-                    } else {
-                        table.firstElementChild.firstElementChild.firstElementChild.style.display = 'none';
-                        continue;
                     }
                     break;
                 case 'selectedProgram': td.innerHTML = comparisonList[i][key] * 100 + '\t' + '%';
