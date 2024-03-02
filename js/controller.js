@@ -1,4 +1,5 @@
 import * as Model from './model.js';
+import updateModel from './utils/updateModel.js';
 import programs from './view/radioPrograms.js';
 import updateResultsView from './view/updateResultsView.js';
 import { updateMinFirstPayment } from './view/utils.js';
@@ -13,7 +14,7 @@ import paymentRange from './view/paymentRange.js';
 import termInput from './view/termInput.js';
 import termRange from './view/termRange.js';
 
-import comparison from './view/comparison.js';
+import {deleteRows, addToComparison, sortComparison} from './view/comparison.js';
 
 window.onload = function() {
     const getData = Model.getData;
@@ -49,9 +50,6 @@ window.onload = function() {
     }
     const results = Model.getResults();
     updateResultsView(results);
-
-    // init comparison
-    comparison(getData, Model.getResults);
 
     // update form
     document.addEventListener('updateForm', (e) => {
@@ -99,4 +97,48 @@ window.onload = function() {
             cleaveTerm.setRawValue(data.term);
         }
     }
+
+
+
+    
+
+    // add to comparison
+    const comparisonList = getData().comparison,
+          table = document.querySelector('#comparison-table'),
+          addToComparisonBtn = document.querySelector('#add-to-comparison-btn');
+        
+    addToComparisonBtn.addEventListener('click', () => {
+        const data = getData();
+        function getMaxId(array) {
+            let max = 0;
+            for (let i = 0; i < array.length; i++) {
+                if (array[i].id >= max) max = array[i].id;
+            }
+            return max;
+        }
+        comparisonList.push({
+            id: getMaxId(comparisonList) + 1,
+            title: data.id ? data.id : 'base-value',
+            monthPayment: parseInt(Model.getResults().monthPayment),
+            firstPayment: data.firstPayment,
+            selectedProgram: data.selectedProgram,
+            cost: data.cost,
+            term: data.term,
+        });
+        updateModel(addToComparisonBtn, {comparison: comparisonList, onUpdate: 'addToComparisonBtn'});
+
+        addToComparison(comparisonList);
+    });
+    
+    // table btns
+    table.addEventListener('click', (e) => {
+        if (e.target.className !== 'table-del-btn') return;
+        let delBtn = e.target;
+        comparisonList.splice(delBtn.closest('tr').rowIndex - 1, 1);
+        updateModel(addToComparisonBtn, {comparison: comparisonList, onUpdate: 'delComparisonBtn'});
+        deleteRows(e);
+    });
+
+    sortComparison();
+
 }
