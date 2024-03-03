@@ -96,6 +96,10 @@ window.onload = function() {
         document.querySelector('#gov-value + .radio-label .radio-label-percent').value = getData().programs.gov * 100;
         document.querySelector('#zero-value + .radio-label .radio-label-percent').value = getData().programs.zero * 100;
     }
+    if (localStorage.getItem('mortgageComparison')) {
+        Model.setData({comparison: JSON.parse(localStorage.getItem('mortgageComparison'))});
+        addToComparison(JSON.parse(localStorage.getItem('mortgageComparison')));
+    }
     const results = Model.getResults();
     updateResultsView(results.rate, results.monthPayment, results.totalCost, results.overPayment);
 
@@ -173,6 +177,8 @@ window.onload = function() {
         updateModel(addToComparisonBtn, {comparison: comparisonList, onUpdate: 'addToComparisonBtn'});
 
         addToComparison(comparisonList);
+
+        localStorage.setItem('mortgageComparison', JSON.stringify(comparisonList));
     });
     
     // table btns
@@ -181,6 +187,7 @@ window.onload = function() {
         let delBtn = e.target;
         comparisonList.splice(delBtn.closest('tr').rowIndex - 1, 1);
         updateModel(addToComparisonBtn, {comparison: comparisonList, onUpdate: 'delComparisonBtn'});
+        localStorage.setItem('mortgageComparison', JSON.stringify(comparisonList));
         deleteRows(e);
     });
 
