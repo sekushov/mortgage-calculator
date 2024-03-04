@@ -332,6 +332,15 @@ body {
 	top: 1px;
 }
 
+.reset-btn {
+    padding: 0.2em;
+    width: 60%;
+    margin: 15px auto;
+    font-size: 12px;
+	background-color: #212121;
+    color: #fff;
+}
+
 .order-btn--black {
 	background-color: #212121;
     color: #fff;
@@ -397,7 +406,7 @@ body {
 
 #comparison-table {
 	width: 80%;
-    margin: 50px auto;
+    margin: 20px auto;
     font-size: 14pt;
 	text-align: center;
 	border-collapse: collapse;
@@ -471,11 +480,12 @@ body {
 	min-width: 32px;
 }
 #comparison-table tr td:nth-child(7) {
-	padding: 0
+	padding: 0;
+	margin-right: 10px;
 }
 .table-del-btn {
 	background: url(./../img/bin.png) center center / contain no-repeat;
-    width: 25px;
+    width: 40px;
 	max-width: 100%;
     height: 25px;
 }
@@ -507,7 +517,7 @@ body {
 @media (orientation: portrait) {
 	#comparison-table {
 		width: 100%;
-		/* margin-left: -10px; */
+		margin-left: -10px;
 		font-size: 11pt;
 	}
 	
@@ -531,9 +541,6 @@ body {
 		min-width: 32px;
 	}
 	
-	/* #comparison-table td:nth-child(7) {
-		display: none;
-	} */
 
 	#comparison-table th:nth-child(1), #comparison-table td:nth-child(1) {
 		display: none;
@@ -546,10 +553,18 @@ body {
 		background-color: #212121;
 		color: #fff;
 	}
+	.reset-btn:hover, .reset-btn:focus {
+		background-color: #fff;
+		color: #000;
+	}
 }
 @media (hover: none) {
 	.order-btn:active {
 		background-color: #212121;
 		color: #fff;
+	}
+	.reset-btn:active {
+		background-color: #fff;
+		color: #000;
 	}
 }

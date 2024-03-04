@@ -96,12 +96,19 @@ window.onload = function() {
         document.querySelector('#gov-value + .radio-label .radio-label-percent').value = getData().programs.gov * 100;
         document.querySelector('#zero-value + .radio-label .radio-label-percent').value = getData().programs.zero * 100;
     }
-    if (localStorage.getItem('mortgageComparison')) {
+    if (localStorage.getItem('mortgageComparison') && JSON.parse(localStorage.getItem('mortgageComparison'))[0] !== undefined) {
         Model.setData({comparison: JSON.parse(localStorage.getItem('mortgageComparison'))});
         addToComparison(JSON.parse(localStorage.getItem('mortgageComparison')));
     }
     const results = Model.getResults();
     updateResultsView(results.rate, results.monthPayment, results.totalCost, results.overPayment);
+
+    const resetBtn = document.querySelector('#reset-btn');
+    resetBtn.addEventListener('click', () => {
+        localStorage.removeItem('mortgageRate');
+        localStorage.removeItem('mortgageComparison');
+        location.reload();
+    })
 
     // update form
     document.addEventListener('updateForm', (e) => {

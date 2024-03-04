@@ -37,7 +37,7 @@ function getResults() {
 }
 
 function setData(newData) {
-    console.log('New data: ', newData);
+    // console.log('New data: ', newData);
 
     if (newData.onUpdate === 'radioProgram') {
         if (newData.id === 'zero-value') data.minFirstPayment = 0
@@ -105,7 +105,7 @@ function setData(newData) {
         overPayment
     }
 
-    console.log('Updated data: ', data);
+    // console.log('Updated data: ', data);
 }
 
 export {getData, setData, getResults};
